@@ -1,5 +1,5 @@
 export class Category{
-    constructor(public id?:number, public nome?: string, public description?: string){
+    constructor(public id?:number, public name?: string, public description?: string){
 
     }
 }
