@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import{Observable, pipe, throwError} from "rxjs";
 import {map,catchError, flatMap} from "rxjs/operators";
 import {Category} from "./category.model";
+
 import {element} from 'protractor';
 
 
@@ -40,7 +40,7 @@ export class CategoryService {
   delete(id: number):Observable<any>{
     
     const url = `${this.apiPath}/${id}`; 
-    return this.http.delete(url).pipe(catchError(this.handlerError), map(null));
+    return this.http.delete(url);
 
   }
 
@@ -57,7 +57,7 @@ export class CategoryService {
     return jsonData as Category;
   }
 
-  private handlerError(error: any): Observable.<any>{
+  private handlerError(error: any): Observable<any>{
     console.log("Erro Na Requisição => ", error);
     return throwError(error);
   }
